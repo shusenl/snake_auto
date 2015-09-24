@@ -7,12 +7,11 @@ function ASTnode(value, parent) {
   this.parent = parent;
 }
 
-//build the AST tree
+//build the AST tree, pNode -> parent of current node
 function parseList(inputList, pNode){
   console.log(inputList);
-  //pNode -> parent of current node
   var node;
-  if(inputList.length===1)
+  if(inputList.length===1)//if is leaf
     node = new ASTnode(inputList, pNode);
   else {
     //current node
@@ -27,11 +26,10 @@ function parseList(inputList, pNode){
         pStack.pop();
       }
       //if not in a pair of ( )
-      if(pStack.length===0 && inputList[i]!=='(' && inputList[i]!==')')
+      else if(pStack.length===0)// && inputList[i]!=='(' && inputList[i]!==')')
         node.children.push(new ASTnode(inputList[i], node) );
     }
-  }
-  
+  }  
   pNode.children.push(node);
   return node;
 }
