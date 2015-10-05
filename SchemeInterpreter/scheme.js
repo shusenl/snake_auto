@@ -41,6 +41,7 @@ function evalue(AST){
 
 //run test
 function run(){
+  //debugger
   console.log('------------Test:-------------');
   var input=' (+ 6(* 7 14) ( -(/ 12 2) 3))  ';
   inputList=input.replace(/\(/g, ' ( ').replace(/\)/g, " ) ").trim().split(/\s+/);
@@ -50,5 +51,5 @@ function run(){
   console.log(root);
   //console.log(evalue(parse(input)));
 }
-
-document.getElementById("compute").addEventListener("click", run);
+run();
+//document.getElementById("compute").addEventListener("click", run);
